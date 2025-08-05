@@ -35,12 +35,16 @@ public class CartItem {
         }
     }
 
+    public Product getproduct(){
+        return product;
+    }
+
     public void increaseQuantity(int amount){
-        this.quantity += amount;
+        quantity += amount;
         checkRep();
     }
 
-    public double getincreaseQuantity() {
+    public double getquantity() {
         return quantity;
     }
 
