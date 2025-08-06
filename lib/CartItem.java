@@ -21,6 +21,7 @@ public class CartItem {
     public CartItem(Product product, int quantity){
         this.product = product;
         this.quantity = quantity;
+        checkRep();
     }
 
     /**
@@ -39,13 +40,14 @@ public class CartItem {
         return product;
     }
 
-    public void increaseQuantity(int amount){
-        quantity += amount;
-        checkRep();
-    }
-
     public double getquantity() {
         return quantity;
     }
 
+    public void increaseQuantity(int amount){
+        if(amount > 0){
+            this.quantity += amount;
+        }
+        checkRep();
+    }
 }
