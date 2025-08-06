@@ -6,24 +6,10 @@ public final class Product {
     private final String productId;
     private final String productName;
     private final double price;
-
     // Representation Invariant (RI):
     // - productId และ productName ต้องไม่เป็นค่าว่าง (null/blank)
     // - price ต้องไม่ติดลบ
     
-    /**
-     * Constructor เริ่มต้นรับ productId, productName, price และเรียก checkRep()
-     * @param productId 
-     * @param productName
-     * @param price
-     */
-    public Product(String productId, String productName, double price){
-        this.productId = productId;
-        this.productName = productName;
-        this.price = price;
-        checkRep();
-    }
-
     /**
      * ตรวจสอบว่า Rep เป็นจริงหรือไม่
      */
@@ -38,6 +24,20 @@ public final class Product {
             throw new RuntimeException("Price must not be negative.");
         }
     }
+    
+    /**
+     * Constructor เริ่มต้นรับ productId, productName, price และเรียก checkRep()
+     * @param productId 
+     * @param productName
+     * @param price
+     */
+    public Product(String productId, String productName, double price){
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        checkRep();
+    }
+
 
     
     public String getproductId(){
