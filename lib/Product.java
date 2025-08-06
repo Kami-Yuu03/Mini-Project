@@ -14,10 +14,10 @@ public final class Product {
      * ตรวจสอบว่า Rep เป็นจริงหรือไม่
      */
     public void checkRep(){
-        if((productId == null) || (productId.isEmpty())){
+        if((productId == null) || (productId.isBlank())){
             throw new RuntimeException("Product ID must not be null or blank.");
         }
-        if((productName == null) || (productName.isEmpty())){
+        if((productName == null) || (productName.isBlank())){
             throw new RuntimeException("Product name must not be null or blank.");
         }
         if(price < 0){
@@ -51,7 +51,7 @@ public final class Product {
     public double getprice(){
         return price;
     }
-
+    
     public boolean equals(String productId) {
         if(this.productId.equals(productId)) 
             return true;

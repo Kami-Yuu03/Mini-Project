@@ -3,42 +3,41 @@ import java.util.ArrayList;
 
 public class ProductCatalog {
 
-    ArrayList<Product> Catalog;
+    ArrayList<Product> products = new ArrayList<>();
 
     // Representation Invariant (RI)
     // - ArrayList ต้องไม่เป็น null และห้ามมี Product ที่ซ้ำกัน
 
+    public void checkRep(){
+        if(products == null){
+            throw new RuntimeException("Product must not be null");
+        }
+        for (int i = 0; i < products.size(); i++){
+            for(int j = i + 1 ; j < products.size(); j++){
+                if (products.get(i).equals(products.get(j))){
+                    throw new RuntimeException("RI violated : Catalog contains duplicate products.");
+                }
+            }
+        }
+    }
+
     public ProductCatalog(){
-        Catalog = new ArrayList<>();
         checkRep();
     }
 
-    public void checkRep(){
-        if(Catalog == null){
-            throw new RuntimeException("Catalog must not be null");
-        }
-        if(Catalog.equals(Catalog)){
-            throw new RuntimeException("Product must not be same");
-        }  
-    }
-
     public void addProduct(Product product){
-        //ตรวจสอบว่าค่าซ้ำกับที่มีอยู่ไหม
-        if(product.getproductId() != null){
-            System.out.println("มีสินค้านี้อยู่แล้ว");
-            return;
+        if((product != null) && (!products.contains(product))){
+            products.add(product);
         }
-        Catalog.add(product);
         checkRep();
     }
 
     public Product findById(String productId){
-        for(Product Id : Catalog){
+        for(Product Id : products){
             if(Id.getproductId().equals(productId)){
                 return Id;
             }
         }
-        checkRep();
         return null;
     }
 
