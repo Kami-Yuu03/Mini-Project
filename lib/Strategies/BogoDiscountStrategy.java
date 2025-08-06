@@ -8,7 +8,7 @@ public class BogoDiscountStrategy implements DiscountStrategy{
         double originalPrice = item.getproduct().getprice() * item.getquantity();
         if(item.getquantity() % 2 == 0){
             return originalPrice / 2;
-        } else if (item.getquantity() % 2 == 1){
+        } else if ((item.getquantity() % 2 == 1)||(item.getquantity() != 1)){
             return (originalPrice - item.getproduct().getprice());
         } else {
             return originalPrice;
